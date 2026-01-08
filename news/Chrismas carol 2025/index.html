@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Chrismas Carol 2025 - YMCA Matara Programme">
-    <title>Chrismas Carol 2025 | YMCA Matara</title>
+    <meta name="description" content="Christmas Carol Ceremony 2024 - YMCA Matara Programme">
+    <title>Christmas Carol Ceremony 2024 | YMCA Matara</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../../images/ymca.png">
     <style>
         :root {
             --ymca-blue: #004a99;
@@ -79,10 +80,9 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 800;
-            font-size: 0.9rem;
-            color: var(--ymca-blue);
+            padding: 4px;
             box-shadow: var(--shadow-md);
+            object-fit: contain;
         }
 
         .logo-text {
@@ -183,6 +183,57 @@
             margin: 0 auto;
             padding: 3rem 1.5rem;
             flex: 1;
+            width: 100%;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-100);
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+
+        .filter-select {
+            padding: 0.75rem 2.5rem 0.75rem 1rem;
+            font-size: 1rem;
+            border: 2px solid var(--gray-200);
+            border-radius: 10px;
+            background: var(--white);
+            color: var(--gray-700);
+            cursor: pointer;
+            min-width: 160px;
+            min-height: 48px;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23374151' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .filter-select:hover {
+            border-color: var(--ymca-blue);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: var(--ymca-blue);
+            box-shadow: 0 0 0 3px rgba(0, 74, 153, 0.15);
         }
 
         /* News List Styles */
@@ -204,6 +255,10 @@
             display: block;
         }
 
+        .news-card.hidden {
+            display: none;
+        }
+
         .news-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-xl);
@@ -211,14 +266,23 @@
 
         .news-card-header {
             background: linear-gradient(135deg, var(--ymca-blue), var(--ymca-blue-dark));
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             color: var(--white);
         }
 
         .news-card-header h3 {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .news-card-date {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
 
         .news-card-body {
@@ -228,6 +292,7 @@
         .news-card-body p {
             color: var(--gray-600);
             font-size: 0.95rem;
+            line-height: 1.6;
         }
 
         .news-card-footer {
@@ -240,6 +305,36 @@
             font-size: 0.9rem;
         }
 
+        /* No Results State */
+        .no-results {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--white);
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            display: none;
+        }
+
+        .no-results.visible {
+            display: block;
+        }
+
+        .no-results-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        .no-results h3 {
+            font-size: 1.25rem;
+            color: var(--gray-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .no-results p {
+            color: var(--gray-600);
+        }
+
         /* Programme Page Styles */
         .programme-content {
             background: var(--white);
@@ -250,11 +345,87 @@
             margin-bottom: 2rem;
         }
 
-        .programme-description {
-            white-space: pre-wrap;
+        .programme-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--gray-600);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        /* Markdown Content Styles */
+        .article-content {
             line-height: 1.8;
             color: var(--gray-700);
             font-size: 1.05rem;
+        }
+
+        .article-content h1 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin: 2rem 0 1rem;
+            line-height: 1.3;
+        }
+
+        .article-content h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin: 1.75rem 0 0.75rem;
+            line-height: 1.3;
+        }
+
+        .article-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1rem;
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 1rem 0 1.5rem 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content strong {
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .article-content em {
+            font-style: italic;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid var(--ymca-blue);
+            padding-left: 1rem;
+            margin: 1.5rem 0;
+            color: var(--gray-600);
+            font-style: italic;
+        }
+
+        .article-content code {
+            background: var(--gray-100);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-size: 0.9em;
+        }
+
+        .article-content hr {
+            border: none;
+            border-top: 1px solid var(--gray-200);
+            margin: 2rem 0;
         }
 
         .back-link {
@@ -274,11 +445,13 @@
 
         /* Media Gallery */
         .gallery-section {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
         }
 
         .gallery-section h2 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             color: var(--gray-800);
             margin-bottom: 1.5rem;
@@ -286,7 +459,7 @@
 
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
         }
 
@@ -295,23 +468,93 @@
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transition: transform 0.3s ease;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
         }
 
         .gallery-item:hover {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
 
         .gallery-item img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             display: block;
         }
 
         .gallery-item video {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
             background: #000;
+        }
+
+        /* Modal/Lightbox Overlay */
+        .viewer-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            touch-action: pinch-zoom;
+        }
+
+        .viewer-overlay.active {
+            display: flex;
+        }
+
+        .viewer-content {
+            max-width: 95vw;
+            max-height: 95vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .viewer-content img {
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+
+        .viewer-content video {
+            max-width: 95vw;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 4px;
+            background: #000;
+        }
+
+        .viewer-close {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.2s, transform 0.2s;
+            z-index: 10000;
+        }
+
+        .viewer-close:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: scale(1.1);
         }
 
         /* Empty State */
@@ -398,11 +641,24 @@
                 padding: 2rem 1rem;
             }
 
+            .filter-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-select {
+                width: 100%;
+            }
+
             .programme-content {
                 padding: 1.5rem;
             }
 
             .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .news-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -413,7 +669,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <a href="../../index.html" class="logo">
-                <div class="logo-icon">YMCA</div>
+                <img src="../../images/ymca.png" class="logo-icon" alt="YMCA Logo">
                 <div class="logo-text">
                     YMCA Matara
                     <span>Sri Lanka</span>
@@ -430,7 +686,7 @@
     <!-- Page Header -->
     <header class="page-header">
         <div class="page-header-content">
-            <h1>Chrismas Carol 2025</h1>
+            <h1>Christmas Carol Ceremony 2024</h1>
         </div>
     </header>
 
@@ -439,25 +695,47 @@
         <a href="../../news.html" class="back-link">← Back to News</a>
         
         <article class="programme-content">
-            <div class="programme-description">Galsa lslflfjf alleodsld ooood lslslslrrrrr lelelesjsjsjswjwjw
-
-ghghghghghghg
-fhfhfhfhfhfhf
-
-ghghghghg:
- 1. dfdfdfdfd
- 2. fjfjfjfjfj
- 3. tytytytytyt</div>
+            <div class="programme-meta">
+                <span>📅</span>
+                <span>December 15, 2025</span>
+            </div>
+            <div class="article-content">
+                <p>Carol wawlo carol!!!!</p>
+<h2>Ehema Hondada</h2>
+<ul>
+<li>Ehema karanna epa</li>
+<li>Honda ne</li>
+<li>Hml handamani</li>
+</ul>
+<h2>Programme Highlights</h2>
+<ul>
+<li>Leadership workshops and team-building activities</li>
+<li>Public speaking and communication skills training</li>
+<li>Community service project planning</li>
+<li>Sports and recreational activities</li>
+<li>Networking with youth from different communities</li>
+</ul>
+<h2>Camp Schedule</h2>
+<p><strong>Day 1:</strong> Welcome ceremony, icebreaker activities, leadership fundamentals</p>
+<p><strong>Day 2:</strong> Practical workshops, group presentations, closing ceremony</p>
+<h2>Acknowledgements</h2>
+<p>We thank all participants, volunteers, and sponsors who made this event possible. Special thanks to the <strong>National Council of YMCAs Sri Lanka</strong> for their support.</p>
+<blockquote>
+<p>"The camp was an incredible experience. I learned so much about leadership and made friends for life!" - <em>Participant feedback</em></p>
+</blockquote>
+<hr />
+<p>For more information about upcoming programmes, visit our office or contact us at info@ymcamatara.lk</p>
+            </div>
             
         <section class="gallery-section">
-            <h2>📸 Photos & Videos</h2>
+            <h2>Photos & Videos</h2>
             <div class="gallery-grid">
                 
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openImageViewer('tree1.jpg')">
                 <img src="tree1.jpg" alt="Tree1" loading="lazy">
             </div>
             
-            <div class="gallery-item">
+            <div class="gallery-item" onclick="openImageViewer('tree2.jpg')">
                 <img src="tree2.jpg" alt="Tree2" loading="lazy">
             </div>
             
@@ -466,6 +744,12 @@ ghghghghg:
         
         </article>
     </main>
+
+    <!-- Media Viewer Modal -->
+    <div id="viewerOverlay" class="viewer-overlay" onclick="closeViewer(event)">
+        <button class="viewer-close" onclick="closeViewer(event)">&times;</button>
+        <div class="viewer-content" id="viewerContent"></div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -478,6 +762,43 @@ ghghghghg:
         function toggleMenu() {
             document.getElementById('navLinks').classList.toggle('active');
         }
+
+        function openImageViewer(src) {
+            const overlay = document.getElementById('viewerOverlay');
+            const content = document.getElementById('viewerContent');
+            content.innerHTML = '<img src="' + src + '" alt="Full size image">';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openVideoViewer(src) {
+            const overlay = document.getElementById('viewerOverlay');
+            const content = document.getElementById('viewerContent');
+            content.innerHTML = '<video src="' + src + '" controls autoplay></video>';
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeViewer(event) {
+            if (event) {
+                const target = event.target;
+                // Only close if clicking overlay background or close button
+                if (!target.closest('.viewer-content') || target.closest('.viewer-close')) {
+                    const overlay = document.getElementById('viewerOverlay');
+                    const content = document.getElementById('viewerContent');
+                    overlay.classList.remove('active');
+                    content.innerHTML = '';
+                    document.body.style.overflow = '';
+                }
+            }
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeViewer({ target: document.getElementById('viewerOverlay') });
+            }
+        });
     </script>
 </body>
 </html>
