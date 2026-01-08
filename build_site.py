@@ -382,7 +382,7 @@ def get_common_styles() -> str:
         }
 
         .news-card.has-thumbnail .news-card-header {
-            background: linear-gradient(135deg, rgba(0, 74, 153, 0.85), rgba(0, 53, 112, 0.85));
+            background: linear-gradient(135deg, rgba(0, 74, 153, 0.75), rgba(0, 53, 112, 0.75));
             position: relative;
             z-index: 2;
             text-shadow: none;
@@ -407,7 +407,7 @@ def get_common_styles() -> str:
         }
 
         .news-card.has-thumbnail .footer-btn {
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.4);
             color: var(--ymca-blue);
             padding: 0.6rem 1.2rem;
             border-radius: 50px;
